@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/chipbell4/gamma-distribution/issues"
   },
-  "homepage": "https://github.com/chipbell4/gamma-distribution"
+  "homepage": "https://github.com/chipbell4/gamma-distribution",
+  "dependencies": {
+    "gamma": "^1.0.0",
+    "incomplete-gamma": "^1.0.1"
+  }
 }
