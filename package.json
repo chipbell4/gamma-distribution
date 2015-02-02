@@ -1,0 +1,24 @@
+{
+  "name": "gamma-distribution",
+  "version": "1.0.0",
+  "description": "The PDF and CDF of the gamma distribution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com:chipbell4/gamma-distribution.git"
+  },
+  "keywords": [
+    "gamma",
+    "distribution",
+    "probability"
+  ],
+  "author": "Chip Bell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chipbell4/gamma-distribution/issues"
+  },
+  "homepage": "https://github.com/chipbell4/gamma-distribution"
+}
