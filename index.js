@@ -12,11 +12,31 @@ var mean = require('mean');
  * @return float
  */
 var pdf = function(x, k, theta) {
-    // For k <= 1, and x = 0, the function is undefined, but we'll use the limit instead
-    if(k < 1 && x == 0) {
-        x = 0.001;
-    }
     return Math.pow(x, k - 1) * Math.exp(-x / theta) / gamma(k) / Math.pow(theta, k);
+};
+
+/**
+ * Wrapper around the PDF of the gamma distribution. Handles edge cases like k <= 1 and x = 0,
+ * which is undefined but has a clear limit.
+ *
+ * @param x     The value at which to calculate
+ * @param k     The shape parameter
+ * @param theta The scale parameter 
+ *
+ * @return float
+ */
+var pdfWrapper = function(x, k, theta) {
+    if(k >= 1 || x != 0) {
+        return pdf(x, k, theta);
+    }
+
+    // else approximate by estimating the limit
+    var h = 0.0001;
+    var pdfOfH = pdf(h, k, theta);
+    var pdfOf2h = pdf(2 * h, k, theta);
+
+    // using a linear extrapolation (or just Taylor's theorem), we can estimate pdf(0):
+    return pdfOfH + (pdfOfH - pdfOf2h) / h;
 };
 
 /**
@@ -64,7 +84,7 @@ var fit = function(data) {
 };
 
 module.exports = {
-    pdf: pdf,
+    pdf: pdfWrapper,
     cdf: cdf,
     fit: fit
 };
