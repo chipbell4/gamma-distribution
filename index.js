@@ -49,7 +49,7 @@ var pdfWrapper = function(x, k, theta) {
 var cdf = function(x, k, theta) {
 
     var noParamPdf = function(t) {
-        return pdf(t, k, theta);
+        return pdfWrapper(t, k, theta);
     };
 
     return integrate(noParamPdf, 0, x, Math.round(x * 10));
