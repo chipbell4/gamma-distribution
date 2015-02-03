@@ -4,7 +4,7 @@
   "description": "The PDF and CDF of the gamma distribution",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/chipbell4/gamma-distribution",
   "dependencies": {
     "gamma": "^1.0.0",
-    "incomplete-gamma": "^1.0.1",
-    "mean": "^1.0.0"
+    "mean": "^1.0.0",
+    "simpsons-rule": "^1.0.0"
   }
 }

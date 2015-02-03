@@ -1,5 +1,5 @@
 var gamma = require('gamma');
-var lowerGamma = require('incomplete-gamma').lower;
+var integrate = require('simpsons-rule');
 var mean = require('mean');
 
 /**
@@ -12,6 +12,10 @@ var mean = require('mean');
  * @return float
  */
 var pdf = function(x, k, theta) {
+    // For k <= 1, and x = 0, the function is undefined, but we'll use the limit instead
+    if(k < 1 && x == 0) {
+        x = 0.001;
+    }
     return Math.pow(x, k - 1) * Math.exp(-x / theta) / gamma(k) / Math.pow(theta, k);
 };
 
@@ -23,7 +27,16 @@ var pdf = function(x, k, theta) {
  * @param theta The scale parameter
  */
 var cdf = function(x, k, theta) {
-    return lowerGamma(k, x / theta) / gamma(k);
+
+    var noParamPdf = function(t) {
+        return pdf(t, k, theta);
+    };
+
+    for(var t = 0; t < x; t += (x / 10)) {
+        console.log('t = ' + t + ' pdf = ' + noParamPdf(t));
+    }
+
+    return integrate(noParamPdf, 0, x, Math.round(x * 10));
 };
 
 /**
