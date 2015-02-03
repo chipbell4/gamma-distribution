@@ -52,10 +52,6 @@ var cdf = function(x, k, theta) {
         return pdf(t, k, theta);
     };
 
-    for(var t = 0; t < x; t += (x / 10)) {
-        console.log('t = ' + t + ' pdf = ' + noParamPdf(t));
-    }
-
     return integrate(noParamPdf, 0, x, Math.round(x * 10));
 };
 
