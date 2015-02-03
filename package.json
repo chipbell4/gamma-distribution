@@ -1,6 +1,6 @@
 {
   "name": "gamma-distribution",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The PDF and CDF of the gamma distribution",
   "main": "index.js",
   "scripts": {
