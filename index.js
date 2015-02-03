@@ -36,7 +36,7 @@ var pdfWrapper = function(x, k, theta) {
     var pdfOf2h = pdf(2 * h, k, theta);
 
     // using a linear extrapolation (or just Taylor's theorem), we can estimate pdf(0):
-    return pdfOfH + (pdfOfH - pdfOf2h) / h;
+    return pdfOfH + (pdfOfH - pdfOf2h);
 };
 
 /**
